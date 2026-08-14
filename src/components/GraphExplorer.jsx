@@ -15,16 +15,16 @@ export default function GraphExplorer({ graphData, isLoading }) {
     const nodes = graphData.nodes
       .filter(n => filterGroup === 'All' || n.group === filterGroup)
       .map(n => {
-        let color = '#818cf8'; // default indigo
+        let color = '#f59e0b'; // Royal Gold
         let shape = 'dot';
         if (n.group === 'Contact') {
-          color = '#818cf8'; // indigo
+          color = '#10b981'; // Emerald
           shape = 'dot';
         } else if (n.group === 'Company') {
-          color = '#34d399'; // emerald
+          color = '#fef08a'; // Pearl Champagne
           shape = 'diamond';
         } else if (n.group === 'Deal') {
-          color = '#c084fc'; // purple
+          color = '#f59e0b'; // Royal Gold
           shape = 'triangle';
         }
 
@@ -37,7 +37,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
           color: {
             background: color,
             border: '#ffffff',
-            highlight: { background: '#f472b6', border: '#ffffff' }
+            highlight: { background: '#fbbf24', border: '#ffffff' }
           },
           font: { color: '#ffffff', face: 'Inter', size: 12 },
           properties: n.properties || {}
@@ -53,8 +53,8 @@ export default function GraphExplorer({ graphData, isLoading }) {
         from: e.from,
         to: e.to,
         label: e.label,
-        font: { color: '#94a3b8', size: 9, align: 'middle' },
-        color: { color: '#334155', highlight: '#a855f7' },
+        font: { color: '#fef08a', size: 9, align: 'middle' },
+        color: { color: '#b45309', highlight: '#f59e0b' },
         arrows: { to: { enabled: true, scaleFactor: 0.6 } },
         smooth: { type: 'continuous' }
       }));
@@ -112,8 +112,8 @@ export default function GraphExplorer({ graphData, isLoading }) {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px]">
-        <div className="w-10 h-10 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
-        <p className="text-slate-400 text-sm mt-4">Rendering Interactive Network Canvas...</p>
+        <div className="w-10 h-10 border-4 border-amber-500/20 border-t-amber-400 rounded-full animate-spin"></div>
+        <p className="text-amber-200/80 text-sm font-medium mt-4">Rendering Interactive Network Canvas...</p>
       </div>
     );
   }
@@ -123,24 +123,24 @@ export default function GraphExplorer({ graphData, isLoading }) {
       {/* Controls Header */}
       <div className="glass-card p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Layers className="w-5 h-5 text-indigo-400" />
-          <h2 className="font-bold text-white text-base">Full Visual Graph Canvas</h2>
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+          <Layers className="w-5 h-5 text-amber-400" />
+          <h2 className="font-royal font-bold text-white text-base tracking-wide uppercase">Full Visual Graph Canvas</h2>
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-black/60 text-amber-300 border border-amber-500/40 font-bold">
             {graphData?.nodes?.length || 0} Nodes · {graphData?.edges?.length || 0} Relationships
           </span>
         </div>
 
         {/* Filters */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400">Show Node Type:</span>
+          <span className="text-xs text-amber-200/80 font-bold uppercase font-royal">Show Node Type:</span>
           {['All', 'Contact', 'Company', 'Deal'].map(group => (
             <button
               key={group}
               onClick={() => setFilterGroup(group)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
                 filterGroup === group
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'gradient-gold-bg text-amber-950 shadow-md shadow-amber-500/30 border border-amber-200/50'
+                  : 'bg-black/50 text-amber-200/75 hover:text-white border border-amber-500/30'
               }`}
             >
               {group}
@@ -153,20 +153,20 @@ export default function GraphExplorer({ graphData, isLoading }) {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Network Canvas Container */}
         <div className="lg:col-span-3 glass-card rounded-2xl overflow-hidden relative min-h-[520px]">
-          <div ref={containerRef} className="w-full h-[520px] bg-slate-950/90" />
+          <div ref={containerRef} className="w-full h-[520px] bg-black/80" />
 
           {/* Graph Legend Overlay */}
-          <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur border border-slate-800 p-3 rounded-xl flex items-center gap-4 text-xs text-slate-300">
+          <div className="absolute bottom-4 left-4 bg-black/90 backdrop-blur border border-amber-500/40 p-3 rounded-xl flex items-center gap-4 text-xs text-amber-100 font-bold">
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-indigo-400 inline-block"></span>
+              <span className="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span>
               <span>Contact</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rotate-45 bg-emerald-400 inline-block"></span>
+              <span className="w-3 h-3 rotate-45 bg-yellow-200 inline-block"></span>
               <span>Company</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 bg-purple-400 inline-block"></span>
+              <span className="w-3 h-3 bg-amber-500 inline-block"></span>
               <span>Deal</span>
             </div>
           </div>
@@ -175,37 +175,37 @@ export default function GraphExplorer({ graphData, isLoading }) {
         {/* Selected Node Details Side Panel */}
         <div className="glass-card p-5 rounded-2xl flex flex-col justify-between space-y-4">
           <div>
-            <div className="flex items-center gap-2 text-slate-400 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Info className="w-4 h-4 text-indigo-400" />
+            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase font-royal tracking-wider mb-3">
+              <Info className="w-4 h-4 text-amber-400" />
               Node Inspector
             </div>
 
             {selectedNode ? (
               <div className="space-y-3">
-                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                  <span className="text-xs px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-semibold">
+                <div className="p-3.5 bg-black/60 rounded-xl border border-amber-500/40">
+                  <span className="text-xs px-2.5 py-0.5 rounded gradient-gold-bg text-amber-950 font-extrabold">
                     {selectedNode.group}
                   </span>
-                  <h3 className="text-base font-bold text-white mt-2">{selectedNode.label}</h3>
+                  <h3 className="text-base font-bold text-white mt-2 font-royal tracking-wide">{selectedNode.label}</h3>
                 </div>
 
                 <div className="space-y-2 text-xs">
                   {Object.entries(selectedNode.properties || {}).map(([key, val]) => (
-                    <div key={key} className="flex justify-between py-1 border-b border-slate-800 text-slate-300">
-                      <span className="text-slate-500 capitalize">{key}:</span>
-                      <span className="font-medium text-white truncate max-w-[140px]">{String(val)}</span>
+                    <div key={key} className="flex justify-between py-1 border-b border-amber-500/20 text-amber-100">
+                      <span className="text-amber-200/80 capitalize font-semibold">{key}:</span>
+                      <span className="font-bold text-white truncate max-w-[140px]">{String(val)}</span>
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
-              <div className="p-6 text-center text-slate-500 text-xs leading-relaxed">
+              <div className="p-6 text-center text-amber-200/70 text-xs leading-relaxed font-medium">
                 Click on any node in the graph canvas to inspect properties and relationship paths.
               </div>
             )}
           </div>
 
-          <div className="text-[11px] text-slate-500 bg-slate-900/50 p-3 rounded-xl border border-slate-800/60">
+          <div className="text-[11px] text-amber-200/70 bg-black/50 p-3 rounded-xl border border-amber-500/30 font-medium">
             💡 Powered by CognoDB openCypher node labels & typed edge attributes.
           </div>
         </div>

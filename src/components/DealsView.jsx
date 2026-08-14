@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DollarSign, Briefcase, UserCheck, Share2, Search, ArrowUpRight, Building2 } from 'lucide-react';
+import { DollarSign, Briefcase, UserCheck, Share2, Search, ArrowUpRight, Building2, Crown } from 'lucide-react';
 
 export default function DealsView({ deals, isLoading }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,8 +21,8 @@ export default function DealsView({ deals, isLoading }) {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[400px]">
-        <div className="w-10 h-10 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
-        <p className="text-slate-400 text-sm mt-4">Loading Deals & Graph Relationships...</p>
+        <div className="w-10 h-10 border-4 border-amber-500/20 border-t-amber-400 rounded-full animate-spin"></div>
+        <p className="text-amber-200/80 text-sm font-medium mt-4">Loading Deals & Graph Relationships...</p>
       </div>
     );
   }
@@ -32,47 +32,47 @@ export default function DealsView({ deals, isLoading }) {
       {/* Metric Cards Header */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1 */}
-        <div className="glass-card p-5 rounded-2xl">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Pipeline</span>
-            <DollarSign className="w-4 h-4 text-emerald-400" />
+        <div className="glass-card p-5 rounded-2xl relative overflow-hidden">
+          <div className="flex items-center justify-between text-amber-200/75 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest font-royal">Total Pipeline</span>
+            <DollarSign className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="text-2xl font-bold text-white">${totalValue.toLocaleString()}</div>
-          <div className="text-xs text-slate-400 mt-1 flex items-center gap-1">
-            <span className="text-emerald-400 font-medium">Active CRM Deals</span>
+          <div className="text-2xl font-black gradient-gold-text">${totalValue.toLocaleString()}</div>
+          <div className="text-xs text-amber-200/70 mt-1 flex items-center gap-1 font-semibold">
+            <span className="text-emerald-400">Active CRM Deals</span>
           </div>
         </div>
 
         {/* Card 2 */}
         <div className="glass-card p-5 rounded-2xl">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Closed Won</span>
-            <Briefcase className="w-4 h-4 text-indigo-400" />
+          <div className="flex items-center justify-between text-amber-200/75 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest font-royal">Closed Won</span>
+            <Briefcase className="w-4 h-4 text-emerald-400" />
           </div>
-          <div className="text-2xl font-bold text-white">${closedWonValue.toLocaleString()}</div>
-          <div className="text-xs text-slate-400 mt-1">
+          <div className="text-2xl font-black text-emerald-400">${closedWonValue.toLocaleString()}</div>
+          <div className="text-xs text-amber-200/70 mt-1 font-semibold">
             {deals.length > 0 ? Math.round((deals.filter(d => d.stage === 'Closed Won').length / deals.length) * 100) : 0}% Win Rate
           </div>
         </div>
 
         {/* Card 3 */}
         <div className="glass-card p-5 rounded-2xl">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Deals</span>
-            <UserCheck className="w-4 h-4 text-purple-400" />
+          <div className="flex items-center justify-between text-amber-200/75 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest font-royal">Total Deals</span>
+            <UserCheck className="w-4 h-4 text-amber-300" />
           </div>
-          <div className="text-2xl font-bold text-white">{deals.length}</div>
-          <div className="text-xs text-slate-400 mt-1">Across {new Set(deals.map(d => d.company)).size} Companies</div>
+          <div className="text-2xl font-black text-amber-100">{deals.length}</div>
+          <div className="text-xs text-amber-200/70 mt-1 font-semibold">Across {new Set(deals.map(d => d.company)).size} Companies</div>
         </div>
 
         {/* Card 4 */}
         <div className="glass-card p-5 rounded-2xl">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Referral Driven</span>
-            <Share2 className="w-4 h-4 text-pink-400" />
+          <div className="flex items-center justify-between text-amber-200/75 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest font-royal">Referral Driven</span>
+            <Share2 className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="text-2xl font-bold text-white">{referralInfluencedCount}</div>
-          <div className="text-xs text-pink-400 mt-1 font-medium">
+          <div className="text-2xl font-black text-amber-300">{referralInfluencedCount}</div>
+          <div className="text-xs text-amber-200/80 mt-1 font-bold">
             Multi-Hop Referral Sourced
           </div>
         </div>
@@ -81,26 +81,26 @@ export default function DealsView({ deals, isLoading }) {
       {/* Filter & Search Bar */}
       <div className="glass-card p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 absolute left-3.5 top-3 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3.5 top-3 text-amber-400/70" />
           <input
             type="text"
             placeholder="Search deals, companies, manager..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition"
+            className="w-full bg-black/60 border border-amber-500/30 rounded-xl pl-10 pr-4 py-2 text-sm text-amber-50 placeholder-amber-200/40 focus:outline-none focus:border-amber-400 transition"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto">
-          <span className="text-xs text-slate-400 font-medium">Stage:</span>
+          <span className="text-xs text-amber-200/80 font-bold uppercase font-royal tracking-wider">Stage:</span>
           {['All', 'Closed Won', 'Qualified', 'Lead'].map((stage) => (
             <button
               key={stage}
               onClick={() => setStageFilter(stage)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition ${
                 stageFilter === stage
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'gradient-gold-bg text-amber-950 shadow-md shadow-amber-500/30 border border-amber-200/50'
+                  : 'bg-black/50 text-amber-200/70 hover:text-white border border-amber-500/30'
               }`}
             >
               {stage}
@@ -111,67 +111,67 @@ export default function DealsView({ deals, isLoading }) {
 
       {/* Deals Table */}
       <div className="glass-card rounded-2xl overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-800/80 flex items-center justify-between">
-          <h2 className="font-semibold text-white text-base">Pipeline & Relationship Origins</h2>
-          <span className="text-xs text-slate-400">Showing {filteredDeals.length} Deals</span>
+        <div className="px-6 py-4 border-b border-amber-500/30 flex items-center justify-between">
+          <h2 className="font-royal font-extrabold text-amber-300 text-lg tracking-wide uppercase">Pipeline & Relationship Origins</h2>
+          <span className="text-xs text-amber-200/70 font-semibold">Showing {filteredDeals.length} Deals</span>
         </div>
 
         {filteredDeals.length === 0 ? (
-          <div className="p-12 text-center text-slate-400">
+          <div className="p-12 text-center text-amber-200/60 font-medium">
             <p>No deals found matching your criteria.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-slate-300">
-              <thead className="bg-slate-900/60 text-xs uppercase font-semibold text-slate-400 border-b border-slate-800">
+            <table className="w-full text-left text-sm text-amber-50">
+              <thead className="bg-black/70 text-xs uppercase font-extrabold text-amber-300/90 border-b border-amber-500/30 font-royal tracking-wider">
                 <tr>
-                  <th className="px-6 py-3.5">Deal Name</th>
-                  <th className="px-6 py-3.5">Target Company</th>
-                  <th className="px-6 py-3.5">Deal Value</th>
-                  <th className="px-6 py-3.5">Stage</th>
-                  <th className="px-6 py-3.5">Account Contact</th>
-                  <th className="px-6 py-3.5">Referral Source (Cypher Hop)</th>
+                  <th className="px-6 py-4">Deal Name</th>
+                  <th className="px-6 py-4">Target Company</th>
+                  <th className="px-6 py-4">Deal Value</th>
+                  <th className="px-6 py-4">Stage</th>
+                  <th className="px-6 py-4">Account Contact</th>
+                  <th className="px-6 py-4">Referral Source (Cypher Hop)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/50">
+              <tbody className="divide-y divide-amber-500/15">
                 {filteredDeals.map((deal) => (
-                  <tr key={deal.id} className="hover:bg-slate-800/30 transition">
-                    <td className="px-6 py-4 font-medium text-white">
+                  <tr key={deal.id} className="hover:bg-amber-950/40 transition">
+                    <td className="px-6 py-4 font-bold text-white">
                       <div className="flex items-center gap-2">
                         {deal.title}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
-                      <div className="flex items-center gap-1.5">
-                        <Building2 className="w-3.5 h-3.5 text-slate-400" />
+                    <td className="px-6 py-4 text-amber-100">
+                      <div className="flex items-center gap-1.5 font-semibold">
+                        <Building2 className="w-3.5 h-3.5 text-amber-400" />
                         {deal.company}
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-semibold text-emerald-400">
+                    <td className="px-6 py-4 font-black text-amber-300">
                       ${deal.value ? deal.value.toLocaleString() : 0}
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      <span className={`px-3 py-1 rounded-full text-xs font-black ${
                         deal.stage === 'Closed Won'
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                           : deal.stage === 'Qualified'
-                          ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                          : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                          : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
                       }`}>
                         {deal.stage}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
+                    <td className="px-6 py-4 text-amber-100 font-semibold">
                       {deal.manager}
                     </td>
                     <td className="px-6 py-4">
                       {deal.referrer && deal.referrer !== 'Direct Search' ? (
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                          <Share2 className="w-3 h-3 text-purple-400" />
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/40">
+                          <Share2 className="w-3 h-3 text-amber-400" />
                           Referred by {deal.referrer}
                         </div>
                       ) : (
-                        <span className="text-xs text-slate-500">Direct Contact</span>
+                        <span className="text-xs text-amber-200/50 font-medium">Direct Contact</span>
                       )}
                     </td>
                   </tr>

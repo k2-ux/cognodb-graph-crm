@@ -53,8 +53,9 @@ export default function GraphExplorer({ graphData, isLoading }) {
         from: e.from,
         to: e.to,
         label: e.label,
-        font: { color: '#fef08a', size: 9, align: 'middle' },
-        color: { color: '#b45309', highlight: '#f59e0b' },
+        font: { color: '#ffffff', size: 14, background: 'rgba(0,0,0,0.85)', align: 'middle' },
+        color: { color: '#fbbf24', highlight: '#fff176' },
+        width: 2.5,
         arrows: { to: { enabled: true, scaleFactor: 0.6 } },
         smooth: { type: 'continuous' }
       }));
@@ -189,11 +190,11 @@ export default function GraphExplorer({ graphData, isLoading }) {
                   <h3 className="text-base font-bold text-white mt-2 font-royal tracking-wide">{selectedNode.label}</h3>
                 </div>
 
-                <div className="space-y-2 text-xs">
+                <div className="space-y-3">
                   {Object.entries(selectedNode.properties || {}).map(([key, val]) => (
-                    <div key={key} className="flex justify-between py-1 border-b border-amber-500/20 text-amber-100">
-                      <span className="text-amber-200/80 capitalize font-semibold">{key}:</span>
-                      <span className="font-bold text-white truncate max-w-[140px]">{String(val)}</span>
+                    <div key={key} className="flex flex-col py-1.5 border-b border-amber-500/20 text-amber-100">
+                      <span className="text-amber-300 font-semibold text-[10px] uppercase tracking-wider">{key}</span>
+                      <span className="font-bold text-white break-all mt-0.5 text-xs">{String(val)}</span>
                     </div>
                   ))}
                 </div>

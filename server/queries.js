@@ -114,6 +114,36 @@ async function getReferralChains(maxHops = 3) {
   }
 }
 
+// Helper to format Neo4j properties (like DateTime and Integer) into clean JS types
+function parseNeo4jValue(val) {
+  if (val === null || val === undefined) return val;
+  if (typeof val === 'object') {
+    if (val.constructor && val.constructor.name === 'Integer') {
+      return val.toNumber ? val.toNumber() : val.low;
+    }
+    if (val.constructor && ['DateTime', 'Date', 'Time', 'LocalTime', 'LocalDateTime', 'Duration'].includes(val.constructor.name)) {
+      const str = val.toString();
+      if (val.constructor.name === 'DateTime') {
+        try {
+          return str.split('.')[0].replace('T', ' ');
+        } catch {
+          return str;
+        }
+      }
+      return str;
+    }
+  }
+  return val;
+}
+
+function parseNeo4jProperties(properties) {
+  const parsed = {};
+  for (const [key, value] of Object.entries(properties)) {
+    parsed[key] = parseNeo4jValue(value);
+  }
+  return parsed;
+}
+
 // 3. Fetch Graph Visualization Data (Nodes & Edges)
 async function getGraphData() {
   const status = await verifyConnection();
@@ -157,7 +187,7 @@ async function getGraphData() {
 
       if (n) {
         const labels = n.labels || [];
-        const props = n.properties || {};
+        const props = parseNeo4jProperties(n.properties || {});
         const id = props.id || props.name || props.title || String(n.identity);
         const label = props.name || props.title || id;
         const type = labels[0] || 'Node';
@@ -168,7 +198,7 @@ async function getGraphData() {
 
       if (m) {
         const labels = m.labels || [];
-        const props = m.properties || {};
+        const props = parseNeo4jProperties(m.properties || {});
         const id = props.id || props.name || props.title || String(m.identity);
         const label = props.name || props.title || id;
         const type = labels[0] || 'Node';

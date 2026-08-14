@@ -15,6 +15,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Global link styling for better visibility */
+a {
+  color: #ffec59; /* bright amber */
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #fff176; /* lighter on hover */
+}
+
 .font-royal {
   font-family: var(--font-royal);
 }

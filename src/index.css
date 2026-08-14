@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-royal: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-accent: 'Cinzel', 'Playfair Display', Georgia, serif;
   color-scheme: dark;
 }
 
@@ -26,11 +26,11 @@ a:hover {
   color: #fff176; /* lighter on hover */
 }
 
-.font-royal {
-  font-family: var(--font-royal);
+.font-accent {
+  font-family: var(--font-accent);
 }
 
-/* Glassmorphism utility classes - Hyderabadi Royal Velvet & Gold Filigree */
+/* Glassmorphism utility classes - Velvet & Gold Filigree */
 .glass-card {
   background: rgba(8, 24, 18, 0.82);
   backdrop-filter: blur(18px);

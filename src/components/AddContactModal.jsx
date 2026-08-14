@@ -45,7 +45,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
               <UserPlus className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <h2 className="text-lg font-royal font-extrabold text-amber-300 uppercase tracking-wide">Add Contact & Referral Link</h2>
+              <h2 className="text-lg font-accent font-extrabold text-amber-300 uppercase tracking-wide">Add Contact & Referral Link</h2>
               <p className="text-xs text-amber-200/70 font-medium">Creates Contact node & optional :REFERRED relationship</p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 text-sm">
           <div>
-            <label className="block text-xs font-bold font-royal text-amber-200 uppercase tracking-wider mb-1">Full Name *</label>
+            <label className="block text-xs font-bold font-accent text-amber-200 uppercase tracking-wider mb-1">Full Name *</label>
             <input
               type="text"
               required
@@ -79,7 +79,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
           </div>
 
           <div>
-            <label className="block text-xs font-bold font-royal text-amber-200 uppercase tracking-wider mb-1">Email Address *</label>
+            <label className="block text-xs font-bold font-accent text-amber-200 uppercase tracking-wider mb-1">Email Address *</label>
             <input
               type="email"
               required
@@ -92,7 +92,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold font-royal text-amber-200 uppercase tracking-wider mb-1">Title / Role</label>
+              <label className="block text-xs font-bold font-accent text-amber-200 uppercase tracking-wider mb-1">Title / Role</label>
               <input
                 type="text"
                 placeholder="e.g. VP of Operations"
@@ -103,7 +103,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
             </div>
 
             <div>
-              <label className="block text-xs font-bold font-royal text-amber-200 uppercase tracking-wider mb-1">Company Name</label>
+              <label className="block text-xs font-bold font-accent text-amber-200 uppercase tracking-wider mb-1">Company Name</label>
               <input
                 type="text"
                 placeholder="e.g. Nexus Tech"
@@ -115,7 +115,7 @@ export default function AddContactModal({ isOpen, onClose, onAdd, contacts = [] 
           </div>
 
           <div>
-            <label className="block text-xs font-bold font-royal text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1">
+            <label className="block text-xs font-bold font-accent text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1">
               <Share2 className="w-3.5 h-3.5 text-amber-400" />
               Referred By (Graph Connection)
             </label>

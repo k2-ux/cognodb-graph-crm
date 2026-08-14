@@ -11,7 +11,7 @@ export default function Header({ activeTab, setActiveTab, dbStatus, onSeed, onAd
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="font-royal font-extrabold text-2xl tracking-wider gradient-gold-text uppercase">GraphCRM</h1>
+            <h1 className="font-accent font-extrabold text-2xl tracking-wider gradient-gold-text uppercase">GraphCRM</h1>
             <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 tracking-wider">
               CognoDB Graph
             </span>

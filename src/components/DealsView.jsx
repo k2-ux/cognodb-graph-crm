@@ -34,7 +34,7 @@ export default function DealsView({ deals, isLoading }) {
         {/* Card 1 */}
         <div className="glass-card p-5 rounded-2xl relative overflow-hidden">
           <div className="flex items-center justify-between text-amber-200/75 mb-2">
-            <span className="text-xs font-bold uppercase tracking-widest font-royal">Total Pipeline</span>
+            <span className="text-xs font-bold uppercase tracking-widest font-accent">Total Pipeline</span>
             <DollarSign className="w-4 h-4 text-amber-400" />
           </div>
           <div className="text-2xl font-black gradient-gold-text">${totalValue.toLocaleString()}</div>
@@ -46,7 +46,7 @@ export default function DealsView({ deals, isLoading }) {
         {/* Card 2 */}
         <div className="glass-card p-5 rounded-2xl">
           <div className="flex items-center justify-between text-amber-200/75 mb-2">
-            <span className="text-xs font-bold uppercase tracking-widest font-royal">Closed Won</span>
+            <span className="text-xs font-bold uppercase tracking-widest font-accent">Closed Won</span>
             <Briefcase className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="text-2xl font-black text-emerald-400">${closedWonValue.toLocaleString()}</div>
@@ -58,7 +58,7 @@ export default function DealsView({ deals, isLoading }) {
         {/* Card 3 */}
         <div className="glass-card p-5 rounded-2xl">
           <div className="flex items-center justify-between text-amber-200/75 mb-2">
-            <span className="text-xs font-bold uppercase tracking-widest font-royal">Total Deals</span>
+            <span className="text-xs font-bold uppercase tracking-widest font-accent">Total Deals</span>
             <UserCheck className="w-4 h-4 text-amber-300" />
           </div>
           <div className="text-2xl font-black text-amber-100">{deals.length}</div>
@@ -68,7 +68,7 @@ export default function DealsView({ deals, isLoading }) {
         {/* Card 4 */}
         <div className="glass-card p-5 rounded-2xl">
           <div className="flex items-center justify-between text-amber-200/75 mb-2">
-            <span className="text-xs font-bold uppercase tracking-widest font-royal">Referral Driven</span>
+            <span className="text-xs font-bold uppercase tracking-widest font-accent">Referral Driven</span>
             <Share2 className="w-4 h-4 text-amber-400" />
           </div>
           <div className="text-2xl font-black text-amber-300">{referralInfluencedCount}</div>
@@ -92,7 +92,7 @@ export default function DealsView({ deals, isLoading }) {
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto">
-          <span className="text-xs text-amber-200/80 font-bold uppercase font-royal tracking-wider">Stage:</span>
+          <span className="text-xs text-amber-200/80 font-bold uppercase font-accent tracking-wider">Stage:</span>
           {['All', 'Closed Won', 'Qualified', 'Lead'].map((stage) => (
             <button
               key={stage}
@@ -112,7 +112,7 @@ export default function DealsView({ deals, isLoading }) {
       {/* Deals Table */}
       <div className="glass-card rounded-2xl overflow-hidden">
         <div className="px-6 py-4 border-b border-amber-500/30 flex items-center justify-between">
-          <h2 className="font-royal font-extrabold text-amber-300 text-lg tracking-wide uppercase">Pipeline & Relationship Origins</h2>
+          <h2 className="font-accent font-extrabold text-amber-300 text-lg tracking-wide uppercase">Pipeline & Relationship Origins</h2>
           <span className="text-xs text-amber-200/70 font-semibold">Showing {filteredDeals.length} Deals</span>
         </div>
 
@@ -123,7 +123,7 @@ export default function DealsView({ deals, isLoading }) {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm text-amber-50">
-              <thead className="bg-black/70 text-xs uppercase font-extrabold text-amber-300/90 border-b border-amber-500/30 font-royal tracking-wider">
+              <thead className="bg-black/70 text-xs uppercase font-extrabold text-amber-300/90 border-b border-amber-500/30 font-accent tracking-wider">
                 <tr>
                   <th className="px-6 py-4">Deal Name</th>
                   <th className="px-6 py-4">Target Company</th>

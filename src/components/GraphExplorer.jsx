@@ -15,7 +15,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
     const nodes = graphData.nodes
       .filter(n => filterGroup === 'All' || n.group === filterGroup)
       .map(n => {
-        let color = '#f59e0b'; // Royal Gold
+        let color = '#f59e0b'; // Gold
         let shape = 'dot';
         if (n.group === 'Contact') {
           color = '#10b981'; // Emerald
@@ -24,7 +24,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
           color = '#fef08a'; // Pearl Champagne
           shape = 'diamond';
         } else if (n.group === 'Deal') {
-          color = '#f59e0b'; // Royal Gold
+          color = '#f59e0b'; // Gold
           shape = 'triangle';
         }
 
@@ -125,7 +125,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
       <div className="glass-card p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <Layers className="w-5 h-5 text-amber-400" />
-          <h2 className="font-royal font-bold text-white text-base tracking-wide uppercase">Full Visual Graph Canvas</h2>
+          <h2 className="font-accent font-bold text-white text-base tracking-wide uppercase">Full Visual Graph Canvas</h2>
           <span className="text-xs px-2.5 py-0.5 rounded-full bg-black/60 text-amber-300 border border-amber-500/40 font-bold">
             {graphData?.nodes?.length || 0} Nodes · {graphData?.edges?.length || 0} Relationships
           </span>
@@ -133,7 +133,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
 
         {/* Filters */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-amber-200/80 font-bold uppercase font-royal">Show Node Type:</span>
+          <span className="text-xs text-amber-200/80 font-bold uppercase font-accent">Show Node Type:</span>
           {['All', 'Contact', 'Company', 'Deal'].map(group => (
             <button
               key={group}
@@ -176,7 +176,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
         {/* Selected Node Details Side Panel */}
         <div className="glass-card p-5 rounded-2xl flex flex-col justify-between space-y-4">
           <div>
-            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase font-royal tracking-wider mb-3">
+            <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase font-accent tracking-wider mb-3">
               <Info className="w-4 h-4 text-amber-400" />
               Node Inspector
             </div>
@@ -187,7 +187,7 @@ export default function GraphExplorer({ graphData, isLoading }) {
                   <span className="text-xs px-2.5 py-0.5 rounded gradient-gold-bg text-amber-950 font-extrabold">
                     {selectedNode.group}
                   </span>
-                  <h3 className="text-base font-bold text-white mt-2 font-royal tracking-wide">{selectedNode.label}</h3>
+                  <h3 className="text-base font-bold text-white mt-2 font-accent tracking-wide">{selectedNode.label}</h3>
                 </div>
 
                 <div className="space-y-3">

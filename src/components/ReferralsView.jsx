@@ -42,7 +42,7 @@ ORDER BY hops ASC, dealValue DESC;
             <span className="p-2 rounded-xl gradient-gold-bg text-amber-950 shadow-md shadow-amber-500/25 border border-amber-200/50">
               <Zap className="w-5 h-5 fill-amber-950" />
             </span>
-            <h2 className="text-lg font-royal font-extrabold text-amber-300 tracking-wide uppercase">Multi-Hop Referral Network Explorer</h2>
+            <h2 className="text-lg font-accent font-extrabold text-amber-300 tracking-wide uppercase">Multi-Hop Referral Network Explorer</h2>
           </div>
           <p className="text-sm text-amber-100/90 mt-2 max-w-2xl leading-relaxed font-medium">
             In standard SQL, finding multi-degree connection paths (e.g. <em>"Who introduced whom across 2 or 3 hops to reach a key deal decision maker?"</em>) requires complex nested JOINs. In CognoDB Graph DB, Cypher traverses paths natively using <code className="text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-500/40 font-mono text-xs">[:REFERRED*1..3]</code>.
@@ -51,7 +51,7 @@ ORDER BY hops ASC, dealValue DESC;
 
         {/* Hop Filter Switcher */}
         <div className="flex items-center gap-2 bg-black/60 p-1.5 rounded-xl border border-amber-500/30 shrink-0 backdrop-blur-md">
-          <span className="text-xs text-amber-200/80 px-2 font-bold font-royal">Hop Depth:</span>
+          <span className="text-xs text-amber-200/80 px-2 font-bold font-accent">Hop Depth:</span>
           {['All', '1', '2+'].map(val => (
             <button
               key={val}
@@ -92,7 +92,7 @@ ORDER BY hops ASC, dealValue DESC;
 
             {/* Path Visualizer Flow */}
             <div className="bg-black/60 p-4 rounded-xl border border-amber-500/30 space-y-2">
-              <div className="text-xs text-amber-300/70 uppercase font-bold tracking-wider font-royal">Referral Path</div>
+              <div className="text-xs text-amber-300/70 uppercase font-bold tracking-wider font-accent">Referral Path</div>
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <span className="font-bold text-amber-300 bg-amber-500/20 px-3 py-1 rounded-lg border border-amber-400/40">
                   {item.source}
@@ -135,7 +135,7 @@ ORDER BY hops ASC, dealValue DESC;
       <div className="glass-card p-6 rounded-2xl space-y-3">
         <div className="flex items-center gap-2 text-amber-200 font-bold text-sm">
           <Code className="w-4 h-4 text-amber-400" />
-          <span className="font-royal uppercase tracking-wider">Executed openCypher Multi-Hop Query (Parameterized)</span>
+          <span className="font-accent uppercase tracking-wider">Executed openCypher Multi-Hop Query (Parameterized)</span>
         </div>
         <pre className="bg-black/80 p-4 rounded-xl border border-amber-500/35 font-mono text-xs text-amber-300 overflow-x-auto leading-relaxed">
           {cypherQuerySnippet}

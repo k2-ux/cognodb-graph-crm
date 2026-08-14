@@ -99,7 +99,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0b0f19] text-slate-100 selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen flex flex-col text-slate-100 selection:bg-indigo-500 selection:text-white">
       {/* Top Banner */}
       <Banner dbStatus={dbStatus} />
 
